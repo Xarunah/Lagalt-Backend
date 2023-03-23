@@ -27,7 +27,7 @@ public class ProjectController {
      * Request body, check the Project Dto class
      */
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PostMapping
     public ResponseEntity<Response> createProject(@RequestBody PostProjectDto projectDto) {
         projectService.createProject(projectDto);
@@ -55,7 +55,7 @@ public class ProjectController {
      *
      * @return List of all project create
      */
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("list")
     public ResponseEntity<Response> getAvailableProject() {
 
@@ -67,7 +67,7 @@ public class ProjectController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("{id}")
     public ResponseEntity<Response> getProjectById(@PathVariable("id") Long id) {
 
@@ -76,7 +76,7 @@ public class ProjectController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("{id}")
     public ResponseEntity<Response> updateProgress(@RequestBody PutProjectDto projectDto,@PathVariable("id") Long id) {
 
