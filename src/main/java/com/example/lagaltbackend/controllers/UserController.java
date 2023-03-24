@@ -37,6 +37,7 @@ public class UserController {
      * Check the userDto for response body
      * @return Response
      */
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Response>  createProfile(@RequestBody PostUserDto userDto){

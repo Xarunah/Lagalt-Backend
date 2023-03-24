@@ -122,7 +122,7 @@ ProjectService {
 
         Comment comment= Comment.builder()
                 .message(commentDto.getMessage())
-                .UserId(appUser.getUserId())
+                .userId(appUser.getUserId())
                 .project(project)
                 .build();
 

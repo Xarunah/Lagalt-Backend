@@ -16,10 +16,11 @@ import javax.persistence.ManyToOne;
 @Builder
 public class CommentDto {
 
+    private long id;
+
     private String message;
 
-   // private long userId;
-
-//    private long projectId;
+    private long userId;
+    private long projectId;
 
 }
