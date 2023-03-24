@@ -53,6 +53,9 @@ ProjectService {
                 .skills(projectDto.getSkills())
                 .tags(projectDto.getTags())
                 .userId(projectDto.getUserId())
+                .status(projectDto.getStatus())
+                .progress(projectDto.getProgress())
+                .collaborators(projectDto.getCollaborators())
                 .build();
         return project;
     }

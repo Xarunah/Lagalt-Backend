@@ -43,6 +43,7 @@ public class ProjectController {
      * @return
      */
 
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("join/{id}")
     public ResponseEntity<Response> joinProject(@PathVariable("id") Long projectId, @RequestBody JoinProjectDto joinProjectDto){
         projectService.joinProject(projectId,joinProjectDto.getUserId());

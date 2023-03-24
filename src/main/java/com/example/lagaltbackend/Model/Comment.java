@@ -26,7 +26,5 @@ public class Comment {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Project project;
-
-
-
+    
 }
