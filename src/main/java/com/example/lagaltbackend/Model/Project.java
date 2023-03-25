@@ -1,7 +1,7 @@
 package com.example.lagaltbackend.Model;
+import jakarta.persistence.*;
 
 
-import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,6 +44,10 @@ public class Project {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "image_path")
+    private String image;
+
 
     @ElementCollection
     @CollectionTable(name="project_skills", joinColumns=@JoinColumn(name="projectId"))

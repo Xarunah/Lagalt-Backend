@@ -75,6 +75,7 @@ ProjectService {
                 .skills(project.getSkills())
                 .tags(project.getTags())
                 .userId(project.getUserId())
+                .image(project.getImage())
                 .build();
         return projectDto;
     }

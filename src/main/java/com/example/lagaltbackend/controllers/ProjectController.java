@@ -56,7 +56,7 @@ public class ProjectController {
      *
      * @return List of all project create
      */
-    @CrossOrigin(origins = "https://lagalt-frontend-ten.vercel.app")
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("list")
     public ResponseEntity<Response> getAvailableProject() {
 

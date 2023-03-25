@@ -1,14 +1,9 @@
 package com.example.lagaltbackend.dto;
 
-
-import com.example.lagaltbackend.Model.Project;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Data

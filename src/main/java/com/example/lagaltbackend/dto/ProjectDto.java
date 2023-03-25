@@ -21,6 +21,8 @@ public class ProjectDto {
 
     private String category;
 
+    private String image;
+
     private String shortDescription;
 
     private String description;
