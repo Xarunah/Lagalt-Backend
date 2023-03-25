@@ -23,14 +23,14 @@ public class ProjectApplicationController {
     private final ProjectService projectService;
 
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
     @GetMapping("")
     public ResponseEntity<List<ProjectApplication>> getAllProjectApplications(){
         List<ProjectApplication> projectApplicationList = projectApplicationService.getAllProjectApplications();
         return ResponseEntity.ok(projectApplicationList);
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
     @PutMapping("{id}")
     public ResponseEntity<Response> ReviewProjectApplication(@RequestBody PutProjectApplication projApp, @PathVariable long id ){
         projectApplicationService.reviewProjectApplication(projApp, id);
@@ -38,7 +38,7 @@ public class ProjectApplicationController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
     @GetMapping("whereProjectId={id}")
     public ResponseEntity<List<ProjectApplication>> getProjectApplicationsByProjectId(@PathVariable long id){
         List<ProjectApplication> projectApplication = projectApplicationService.getProjectApplicationsByProjectId(id);
@@ -46,7 +46,7 @@ public class ProjectApplicationController {
 
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
     @PostMapping
     public ResponseEntity<PostProjectApplication> createProjectApplication(@RequestBody PostProjectApplication projectApplication) {
         projectApplicationService.saveProjectApplication(projectApplication);
