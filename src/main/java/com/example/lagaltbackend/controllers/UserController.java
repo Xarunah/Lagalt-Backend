@@ -37,7 +37,7 @@ public class UserController {
      * Check the userDto for response body
      * @return Response
      */
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Response>  createProfile(@RequestBody PostUserDto userDto){
@@ -46,7 +46,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-   @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
+   @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Response> updateProfileDetails(@PathVariable("id") Long id, @RequestBody PutUserDto userDto){
@@ -56,7 +56,7 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("{id}")
     public ResponseEntity<Response> getProfile(@PathVariable("id") Long id){
 
@@ -65,7 +65,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping
     public ResponseEntity<Response> getAllUsers(){
 
@@ -76,7 +76,7 @@ public class UserController {
 
 
 
-    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app/"})
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("whereEmail={email}")
     public ResponseEntity<Response> getProfileByEmail(@PathVariable("email") String email){
 
