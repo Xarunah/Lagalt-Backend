@@ -68,6 +68,9 @@ public class ProjectController {
     }
 
 
+    /**
+     * Returns a particular project by its id
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("{id}")
     public ResponseEntity<Response> getProjectById(@PathVariable("id") Long id) {
@@ -77,6 +80,12 @@ public class ProjectController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * Update the project progress
+     * @param projectDto
+     * @param id
+     * @return
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("{id}")
     public ResponseEntity<Response> updateProgress(@RequestBody PutProjectDto projectDto,@PathVariable("id") Long id) {
