@@ -23,13 +23,20 @@ public class Comment {
     @Column(name = "comment_id")
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private AppUser user;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @Column(name = "message")
     private String message;
+
+    @Column(name = "timestamp")
+    private String timestamp;
+
+
 
 }

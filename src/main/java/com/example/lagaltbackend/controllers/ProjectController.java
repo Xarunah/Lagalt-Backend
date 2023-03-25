@@ -88,20 +88,27 @@ public class ProjectController {
         return ResponseEntity.ok(response);
     }
 
-
-    @PostMapping("projectId/userId")
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
+    @PostMapping("{projectId}/{userId}")
     public ResponseEntity<Response> commentOnProject(
             @PathVariable("projectId") Long projectId,
             @PathVariable("userId") Long  userId,
-            @RequestBody CommentDto commentDto
+            @RequestBody PostCommentDto commentDto
             ){
+
             Response response=new Response("SUCCESS","Comment saved");
+
           projectService.commentOnProject(projectId,userId,commentDto);
+
           return  ResponseEntity.ok(response);
-
-
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
+    @GetMapping("comments/{projectId}")
+    public ResponseEntity<Response> commentOnProject(@PathVariable("projectId") Long projectId){
 
+        Response response=new Response("SUCCESS",projectService.getCommentsByProjectId(projectId));
 
+        return  ResponseEntity.ok(response);
+    }
 }

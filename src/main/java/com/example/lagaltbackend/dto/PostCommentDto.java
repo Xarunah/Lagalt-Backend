@@ -10,12 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class CommentDto {
-
-    private long id;
+public class PostCommentDto {
     private String message;
     private String timestamp;
-    private String username;
-    private long projectId;
 
 }

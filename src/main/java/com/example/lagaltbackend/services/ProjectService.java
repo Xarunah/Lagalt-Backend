@@ -80,6 +80,20 @@ ProjectService {
         return projectDto;
     }
 
+
+
+    private CommentDto mapToCommentDto(Comment comment) {
+
+        CommentDto commentDto = CommentDto.builder()
+                .id(comment.getId())
+                .message(comment.getMessage())
+                .timestamp(comment.getTimestamp())
+                .username(comment.getUser().getUsername())
+                .projectId(comment.getProject().getProjectId())
+                .build();
+        return commentDto;
+    }
+
    // @Transactional
     public void joinProject(long projectId, long userId){
 
@@ -106,12 +120,12 @@ ProjectService {
     public List<ProjectDto> getAllProject() {
         List<Project> projects = projectRepository.findAll();
         List<ProjectDto> projectDtos = projects.stream()
-                .map(p -> mapToProject(p))
+                .map(this::mapToProject)
                 .collect(Collectors.toList());
         return projectDtos;
     }
 
-    public void commentOnProject(Long projectId, Long userId, CommentDto commentDto) {
+    public void commentOnProject(Long projectId, Long userId, PostCommentDto commentDto) {
 
         Project project =projectRepository.findById(projectId)
                 .orElseThrow(()-> new ResponseStatusException
@@ -123,11 +137,22 @@ ProjectService {
 
         Comment comment= Comment.builder()
                 .message(commentDto.getMessage())
-                .userId(appUser.getUserId())
+                .timestamp(commentDto.getTimestamp())
+                .user(appUser)
                 .project(project)
                 .build();
 
         commentRepository.save(comment);
 
     }
+
+    public List<CommentDto> getCommentsByProjectId(long projectId){
+
+        List<Comment> comments = commentRepository.findAll();
+
+        List<CommentDto> commentDtos = comments.stream().map(this::mapToCommentDto).collect(Collectors.toList());;
+
+        return commentDtos;
+    }
+
 }

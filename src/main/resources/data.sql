@@ -16,7 +16,7 @@ VALUES ('Cat-Burrito Game', 1, 'Game', 'This the main game we are currently work
  ('Website with Cat Memes', 2, 'Web', 'A website with lots of memes, with cats!', 'Nice website with cat memes.', 'Started', 'Setting up Angular',true, 'https://i.ibb.co/9pHGWVM/catMemes.png'),
  ('Lagalt App', 3, 'Web', 'A single page application where you can join projects created by other user','Website for nerds with crazy projects.', 'Done','Just deployed on Railway, because FUCK Azure!',true, 'https://i.ibb.co/DM7HWsg/lagalt.png'),
  ('Sonic Adventure 3 (Fan Game)',1, 'Game', 'A sequel to the popular Dreamcast game Sonic Adventure 2 created by the fans for the fans.','Fan-made sequel to Sonic Adventure 2.', 'Stalled','Development hell', true, 'https://i.ibb.co/RBC6jXf/sa3.jpg'),
- ('Pokemon Trainer App',2, 'Web', 'A web application for pokemon fans to discover new pokemon and add them to their favorites', 'Add your favorite pokémon to your collection!','Done', 'Just deployed using vercel', true, 'https://i.ibb.co/8BFNn6d/poke.png'),
+ ('Pokemon Trainer App',2, 'Web', 'A web application for pokemon fans to discover new pokemon and add them to their favorites', 'Add your favorite pokemon to your collection!','Done', 'Just deployed using vercel', true, 'https://i.ibb.co/8BFNn6d/poke.png'),
  ('Translation App', 1, 'Web', 'A single-page application created in React that can translate english words into sign language', 'Translate english words into sign language', 'Done', 'Deployed to vercel',true, 'https://i.ibb.co/9ZcyF49/translation.png'),
  ('RPG Heroes', 1,'Game', 'A Java application with four classes of heroes that can equip weapon and armor', 'A Java application about heroes.', 'Done', 'GitHub Actions finally works!',true, 'https://i.ibb.co/mS2WPMx/rpg.png'),
  ('Dobby: A Harry Potter Fan Film',3,'Film','The film centers around the Dobby the house elf from the Harry Potter series', 'A Harry Potter Fan-Film about Dobby the house Elf','Funding', 'Looking fro main actor',true, 'https://i.ibb.co/hgcfFMh/dobby.jpg'),
@@ -54,7 +54,6 @@ INSERT INTO project_tags (project_id, tags)
 VALUES (1, 'Action'),
        (1, 'Adventure'),
        (1, 'Platformer'),
-
        (2, 'Documentary'),
        (2, 'Comedy'),
        (2, 'Meme culture'),
@@ -78,7 +77,6 @@ VALUES (1, 'Action'),
        (9, 'Wizarding World'),
        (9, 'Harry Potter'),
        (9, 'Fantasy'),
-
        (10, 'Advertisement'),
        (10, 'Shilling'),
        (10, 'Simping');
@@ -92,7 +90,7 @@ VALUES (1,2,false,false,'Jeg elsker katte'),
        (4,1,false,false, 'Sejt jeg elsker også katte og memes');
 
 
-INSERT INTO comment (project_project_id, user_id, message)
-VALUES (1,3,'test1'),
-       (1,2,'Awesome game!!!'),
-       (1,1,'Hello World!');
+INSERT INTO comment (project_id, user_id, message, timestamp)
+VALUES (1,3,'test1', '25-3-2023 at 13:04:15'),
+       (1,2,'Awesome game!!!','22-3-2023 at 21:32:03'),
+       (1,1,'Hello World!', '27-3-2023 at 18:04:40');
