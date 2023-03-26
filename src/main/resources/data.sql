@@ -87,6 +87,7 @@ VALUES (3, 1),
 
 INSERT INTO project_application (project_id, user_id, reviewed, accepted, motivation)
 VALUES (1,2,false,false,'Jeg elsker katte'),
+       (1,3,false,false,'test1'),
        (4,1,false,false, 'Sejt jeg elsker også katte og memes');
 
 
