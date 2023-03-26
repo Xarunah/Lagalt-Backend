@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -150,8 +151,14 @@ ProjectService {
 
         List<Comment> comments = commentRepository.findAll();
 
-        List<CommentDto> commentDtos = comments.stream().map(this::mapToCommentDto).collect(Collectors.toList());;
+        List<Comment> commentsById = new ArrayList<>();
 
+        for(Comment comment: comments){
+            if(comment.getProject().getProjectId() == projectId){
+                commentsById.add(comment);
+            }
+        }
+        List<CommentDto> commentDtos = commentsById.stream().map(this::mapToCommentDto).collect(Collectors.toList());;
         return commentDtos;
     }
 
