@@ -17,15 +17,26 @@ import java.util.List;
 public class ProjectApplicationService {
     private final ProjectApplicationRepository projectApplicationRepository;
 
+    /**
+     * This method saves project application of a particular user
+     * @param projectApplication
+     */
     public void saveProjectApplication(PostProjectApplication projectApplication){
         projectApplicationRepository.save(mapToProjectApplication(projectApplication));
     }
 
+    /**
+     * This method saves review the application by the project owner
+     * @param projectApplication
+     * @param id
+     */
     public void reviewProjectApplication(PutProjectApplication projectApplication, long id){
         projectApplicationRepository.save(mapToProjectApplication(projectApplication, id));
     }
 
-    public ProjectApplication mapToProjectApplication(PostProjectApplication postProj){
+
+    // This method maps the project application to project application dao
+    private ProjectApplication mapToProjectApplication(PostProjectApplication postProj){
 
         ProjectApplication projApp = ProjectApplication.builder()
                 .projectId(postProj.getProjectId())
@@ -34,7 +45,7 @@ public class ProjectApplicationService {
                 .build();
         return projApp;
     }
-
+    // This method maps the project application dao to project application
     public ProjectApplication mapToProjectApplication(PutProjectApplication putProj, long id){
         ProjectApplication projApp = ProjectApplication.builder()
                 .projectApplicationId(id)
@@ -46,15 +57,30 @@ public class ProjectApplicationService {
         return projApp;
     }
 
+    /**
+     * This method returns list of project application
+     * @return  List<ProjectApplication>
+     */
     public List<ProjectApplication> getAllProjectApplications(){
         return projectApplicationRepository.findAll();
     }
 
+
+    /**
+     * This method  returns a paticular project application by its id
+     * @param id
+     * @return
+     */
     public ProjectApplication getProjectApplicationByID(long id){
         return projectApplicationRepository.findById(id).get();
     }
 
 
+    /**
+     * Returns a list of project application by its id
+     * @param id
+     * @return
+     */
     public List<ProjectApplication> getProjectApplicationsByProjectId(long id){
 
         List<ProjectApplication> applications = projectApplicationRepository.findAll();

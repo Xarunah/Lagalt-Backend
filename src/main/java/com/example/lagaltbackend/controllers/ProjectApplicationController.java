@@ -23,6 +23,10 @@ public class ProjectApplicationController {
     private final ProjectService projectService;
 
 
+    /**
+     *
+     * @return list of project application by users
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("")
     public ResponseEntity<List<ProjectApplication>> getAllProjectApplications(){
@@ -30,6 +34,12 @@ public class ProjectApplicationController {
         return ResponseEntity.ok(projectApplicationList);
     }
 
+    /**
+     *  checks if the project application is reviewed
+     * @param projApp
+     * @param id
+     * @return
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("{id}")
     public ResponseEntity<Response> ReviewProjectApplication(@RequestBody PutProjectApplication projApp, @PathVariable long id ){
@@ -37,6 +47,12 @@ public class ProjectApplicationController {
         Response response =new Response("SUCCESS","project application reviewed!");
         return ResponseEntity.ok(response);
     }
+
+    /**
+     * Get all project application by its IDs
+     * @param id
+     * @return
+     */
 
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("whereProjectId={id}")
@@ -46,6 +62,11 @@ public class ProjectApplicationController {
 
     }
 
+    /**
+     * create project application
+     * @param projectApplication
+     * @return
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PostMapping
     public ResponseEntity<PostProjectApplication> createProjectApplication(@RequestBody PostProjectApplication projectApplication) {
@@ -53,16 +74,5 @@ public class ProjectApplicationController {
         return ResponseEntity.status(HttpStatus.CREATED).body(projectApplication);
     }
 
- /*   @PostMapping("{id}")
-    public ResponseEntity<PostProjectApplication> updateProjectApplication(@RequestBody PostProjectApplication projectApplication) {
 
-       // PostProjectApplication _projectApplication = projectApplicationService.
-         //       getProjectApplicationByID(projectApplication.getProjectApplicationId());
-
-     //   if (_projectApplication == null) {
-       //     return ResponseEntity.notFound().build();
-       // }
-        projectApplicationService.saveProjectApplication(projectApplication);
-        return ResponseEntity.ok(projectApplication);
-    }*/
 }

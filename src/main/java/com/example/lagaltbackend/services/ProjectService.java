@@ -26,11 +26,20 @@ ProjectService {
     private final CommentRepository commentRepository;
 
 
+    /**
+     * This method stores a project into the database
+     * @param projectDto
+     */
     public void createProject(PostProjectDto projectDto){
         projectRepository.save(mapToProject(projectDto));
     }
 
 
+    /**
+     * This method update the project and its progress
+     * @param projectDto
+     * @param projectId
+     */
     public void updateProjectProgress(PutProjectDto projectDto, long projectId){
 
         Project project = projectRepository.findById(projectId).get();
@@ -42,7 +51,7 @@ ProjectService {
 
     }
 
-
+    // This is a mapper method, it maps the projectDto to project
     private Project mapToProject(PostProjectDto projectDto) {
 
         Project project = Project.builder()
@@ -60,7 +69,7 @@ ProjectService {
                 .build();
         return project;
     }
-
+    /// This is a mapper method to map project to project dto
     private ProjectDto mapToProject(Project project) {
 
         ProjectDto projectDto = ProjectDto.builder()
@@ -96,15 +105,18 @@ ProjectService {
     }
 
    // @Transactional
+    /**
+     * This Method add a user to a particular project
+     * @param projectId
+     * @param userId
+     */
     public void joinProject(long projectId, long userId){
 
 
         AppUser user=userRepository.findById(userId).get();
-              //  .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"User "+userId+"not found"));
+
 
         Project project =projectRepository.findById(projectId).get();
-
-              //  .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"project id not found"));
 
         List<AppUser> users=  project.getCollaborators();
         users.add(user);
@@ -113,11 +125,21 @@ ProjectService {
 
     }
 
+    /**
+     * This method get all the project in the database
+     * @param id
+     * @return
+     */
+
     public ProjectDto getProjectById(long id){
 
         return mapToProject(projectRepository.findById(id).get());
     }
 
+    /**
+     * This method get all the projects in the database
+     * @return List<ProjectDto>
+     */
     public List<ProjectDto> getAllProject() {
         List<Project> projects = projectRepository.findAll();
         List<ProjectDto> projectDtos = projects.stream()
@@ -126,6 +148,13 @@ ProjectService {
         return projectDtos;
     }
 
+
+    /**
+     * This method post a comment on a particular project
+     * @param projectId
+     * @param userId
+     * @param commentDto
+     */
     public void commentOnProject(Long projectId, Long userId, PostCommentDto commentDto) {
 
         Project project =projectRepository.findById(projectId)
