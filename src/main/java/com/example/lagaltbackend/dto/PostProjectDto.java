@@ -14,7 +14,7 @@ import java.util.Set;
 @Builder
 public class PostProjectDto {
 
-    private long userId;
+    private String userId;
 
     private String title;
 

@@ -1,14 +1,11 @@
 package com.example.lagaltbackend.services;
 import com.example.lagaltbackend.Model.AppUser;
-import com.example.lagaltbackend.Model.Project;
 import com.example.lagaltbackend.dto.*;
 import com.example.lagaltbackend.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -36,7 +33,7 @@ public class UserService {
      * @param userDto
      * @param userId
      */
-    public void updateUserProfile(PutUserDto userDto, long userId){
+    public void updateUserProfile(PutUserDto userDto, String userId){
         userRepository.save(mapFromPutUserDto(userDto, userId));
     }
 
@@ -45,7 +42,7 @@ public class UserService {
      * @param id
      * @return  UserDto
      */
-    public UserDto getUserProfile(Long id) {
+    public UserDto getUserProfile(String id) {
         UserDto userDto=mapDtoToUser(  userRepository.findById(id).orElseThrow(() -> new RuntimeException("Cannot find this user "+ id)));
         return userDto;
     }
@@ -79,10 +76,10 @@ public class UserService {
 
     /**
      * This method set the User profile visibility
-     * They visibility check whether the the user profile should be visible to the public
+     * They visibility check whether the user profile should be visible to the public
      * @param id
      */
-    public void setProfileVisible(Long id){
+    public void setProfileVisible(String id){
         AppUser user =userRepository.findById(id).orElseThrow(()-> new RuntimeException(" id not found"));
         Boolean isVisible= user.isProfileVisibility();
         if (isVisible) {
@@ -98,6 +95,7 @@ public class UserService {
     /// This is a mapper method to map store users profile
     private AppUser mapUserToPostDto(PostUserDto userDto){
         AppUser appUser = AppUser.builder()
+                .UserId(userDto.getUserId())
                 .userEmail(userDto.getUserEmail())
                 .username(userDto.getUsername())
                 .userPortfolio("")
@@ -122,8 +120,8 @@ public class UserService {
     }
 
 
-    /// This is a mapper method to upadate the users profile
-    private AppUser mapFromPutUserDto(PutUserDto userDto, long userId){
+    /// This is a mapper method to update the users profile
+    private AppUser mapFromPutUserDto(PutUserDto userDto, String userId){
         AppUser appUser = userRepository.findById(userId).get();
 
         appUser.setUserDescription(userDto.getUserDescription());

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class PostProjectApplication {
-    private long userId;
+    private String userId;
 
     private long projectId;
 

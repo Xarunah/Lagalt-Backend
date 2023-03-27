@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class JoinProjectDto {
-    private Long userId;
+    private String userId;
 }

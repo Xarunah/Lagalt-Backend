@@ -110,7 +110,7 @@ ProjectService {
      * @param projectId
      * @param userId
      */
-    public void joinProject(long projectId, long userId){
+    public void joinProject(long projectId, String userId){
 
 
         AppUser user=userRepository.findById(userId).get();
@@ -155,7 +155,7 @@ ProjectService {
      * @param userId
      * @param commentDto
      */
-    public void commentOnProject(Long projectId, Long userId, PostCommentDto commentDto) {
+    public void commentOnProject(Long projectId, String userId, PostCommentDto commentDto) {
 
         Project project =projectRepository.findById(projectId)
                 .orElseThrow(()-> new ResponseStatusException

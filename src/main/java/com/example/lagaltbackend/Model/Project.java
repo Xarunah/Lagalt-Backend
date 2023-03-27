@@ -25,7 +25,7 @@ public class Project {
     private long projectId;
 
     @Column(name = "owner_id", updatable = false)
-    private long userId;
+    private String userId;
 
     @Column(name = "title", nullable = false, length = 40)
     private String title;

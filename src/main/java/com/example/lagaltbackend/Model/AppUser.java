@@ -19,9 +19,8 @@ import jakarta.persistence.*;
 @Builder
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long UserId;
+    private String UserId;
 
     @Column(name = "user_name", length = 50, nullable = false)
     private String username;

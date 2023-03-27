@@ -101,7 +101,7 @@ public class ProjectController {
     @PostMapping("{projectId}/{userId}")
     public ResponseEntity<Response> commentOnProject(
             @PathVariable("projectId") Long projectId,
-            @PathVariable("userId") Long  userId,
+            @PathVariable("userId") String  userId,
             @RequestBody PostCommentDto commentDto
             ){
 

@@ -1,8 +1,6 @@
 package com.example.lagaltbackend.services;
 
-import com.example.lagaltbackend.Model.Project;
 import com.example.lagaltbackend.Model.ProjectApplication;
-import com.example.lagaltbackend.Model.AppUser;
 import com.example.lagaltbackend.dto.PostProjectApplication;
 import com.example.lagaltbackend.dto.PutProjectApplication;
 import com.example.lagaltbackend.repository.ProjectApplicationRepository;

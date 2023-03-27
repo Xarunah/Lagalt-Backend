@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PostUserDto {
 
+    private String userId;
     private String username;
-
     private String userEmail;
 }

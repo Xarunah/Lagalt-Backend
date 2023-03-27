@@ -15,7 +15,7 @@ public class ProjectDto {
 
     private long projectId;
 
-    private long userId;
+    private String userId;
 
     private String title;
 
@@ -36,6 +36,6 @@ public class ProjectDto {
     private Set<String> tags;
 
     private boolean project_is_active;
-    private Set<Long> collaborators;
+    private Set<String> collaborators;
 
 }

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class PutProjectApplication {
     private long projectId;
-    private long userId;
+    private String userId;
     private boolean reviewed;
     private boolean accepted;
 }

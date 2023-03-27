@@ -56,7 +56,7 @@ public class UserController {
    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Response> updateProfileDetails(@PathVariable("id") Long id, @RequestBody PutUserDto userDto){
+    public ResponseEntity<Response> updateProfileDetails(@PathVariable("id") String id, @RequestBody PutUserDto userDto){
         userService.updateUserProfile(userDto, id);
         Response response =new Response("SUCCESS","User profile updated");
         return ResponseEntity.ok(response);
@@ -70,7 +70,7 @@ public class UserController {
 
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("{id}")
-    public ResponseEntity<Response> getProfile(@PathVariable("id") Long id){
+    public ResponseEntity<Response> getProfile(@PathVariable("id") String id){
 
         Response response=new Response("SUCCESS",userService.getUserProfile(id));
 
@@ -113,16 +113,6 @@ public class UserController {
      * @return Response
      */
 
-
-    @PostMapping("visible/{id}")
-    public ResponseEntity<Response> setProfileVisibility(@PathVariable("id") Long id){
-
-        userService.setProfileVisible(id);
-
-        Response response=new Response("SUCCESS","Visibility status changed");
-
-        return ResponseEntity.ok(response);
-    }
 
 
 

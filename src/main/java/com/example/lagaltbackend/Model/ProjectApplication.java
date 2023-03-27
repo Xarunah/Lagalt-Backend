@@ -23,7 +23,7 @@ public class ProjectApplication {
     private long projectId;
 
     //User who submitted the application
-    private long userId;
+    private String userId;
 
     // is the application accepted by the owner
     private boolean accepted;
