@@ -18,10 +18,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-  //  private final ProjectRepository projectRepository;
 
-    // this method saves user detdetails
-    //The request body is UserDto class
+    /**
+     *
+     * @param userDto
+     * Add User profile to the database
+     */
     public void addUserProfile(PostUserDto userDto){
 
         userRepository.save(mapUserToPostDto(userDto));
@@ -29,20 +31,40 @@ public class UserService {
     }
 
 
+    /**
+     * Updates the user profile
+     * @param userDto
+     * @param userId
+     */
     public void updateUserProfile(PutUserDto userDto, long userId){
         userRepository.save(mapFromPutUserDto(userDto, userId));
     }
 
+    /**
+     * Get all the User details in the database
+     * @param id
+     * @return  UserDto
+     */
     public UserDto getUserProfile(Long id) {
         UserDto userDto=mapDtoToUser(  userRepository.findById(id).orElseThrow(() -> new RuntimeException("Cannot find this user "+ id)));
         return userDto;
     }
 
+    /**
+     * Get all users from the database
+     * @return List<AppUser>
+     */
     public List<AppUser> getAllUsers(){
 
         return userRepository.findAll();
     }
 
+
+    /**
+     * Get a user by its email address
+     * @param email
+     * @return UserDto
+     */
     public UserDto getUserProfileByEmail(String email) {
         List<AppUser> users = userRepository.findAll();
 
@@ -54,11 +76,12 @@ public class UserService {
         return null;
     }
 
-    public void setNotProfileVisible(Long id) {
-        AppUser user = userRepository.findById(id).orElseThrow(() -> new RuntimeException(" id not found"));
-        user.setProfileVisibility(false);
-    }
 
+    /**
+     * This method set the User profile visibility
+     * They visibility check whether the the user profile should be visible to the public
+     * @param id
+     */
     public void setProfileVisible(Long id){
         AppUser user =userRepository.findById(id).orElseThrow(()-> new RuntimeException(" id not found"));
         Boolean isVisible= user.isProfileVisibility();
@@ -72,6 +95,7 @@ public class UserService {
 
     }
 
+    /// This is a mapper method to map store users profile
     private AppUser mapUserToPostDto(PostUserDto userDto){
         AppUser appUser = AppUser.builder()
                 .userEmail(userDto.getUserEmail())
@@ -81,7 +105,7 @@ public class UserService {
                 .build();
         return appUser;
     }
-
+    /// This is a mapper method to get users profile
     private UserDto mapDtoToUser(AppUser appUser){
 
         UserDto userDto =UserDto.builder()
@@ -97,21 +121,8 @@ public class UserService {
         return userDto;
     }
 
-    private AppUser mapUserToDto(UserDto userDto){
-        AppUser appUser = AppUser.builder()
-                .UserId(userDto.getUserId())
-                .userEmail(userDto.getEmail())
-                .username(userDto.getUsername())
-                .userDescription(userDto.getUserDescription())
-                .userPortfolio(userDto.getUserPortfolio())
-                .userSkill(userDto.getUserSkill())
-                .profileVisibility(userDto.isUserVisibility())
-                .build();
 
-        return appUser;
-
-    }
-
+    /// This is a mapper method to upadate the users profile
     private AppUser mapFromPutUserDto(PutUserDto userDto, long userId){
         AppUser appUser = userRepository.findById(userId).get();
 
@@ -123,16 +134,6 @@ public class UserService {
         return appUser;
     }
 
-   /* public List<ProjectDto> getProjectThatBelongToUser(Long id) {
-        AppUser user= userRepository.findById(id).orElseThrow( ()-> new RuntimeException("This in valid user"));
-
-        return user.getProjects().stream().map(project -> ProjectDto.builder()
-                .title(project.getTitle())
-                .category(project.getCategory())
-                .description(project.getDescription())
-                .project_is_active(project.isProject_is_active())
-                .description(project.getDescription()).build()).collect(Collectors.toList());
-    }*/
 
 
 

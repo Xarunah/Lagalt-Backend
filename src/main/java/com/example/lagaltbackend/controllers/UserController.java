@@ -46,6 +46,13 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+
+    /**
+     * Updates the users profile
+     * @param id
+     * @param userDto
+     * @return
+     */
    @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -55,6 +62,11 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * Get a particular profile by its id
+     * @param id
+     * @return
+     */
 
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("{id}")
@@ -65,6 +77,11 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+
+    /**
+     * Get all the users
+     * @return App Users
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping
     public ResponseEntity<Response> getAllUsers(){
@@ -75,7 +92,11 @@ public class UserController {
     }
 
 
-
+    /**
+     * Get a user by its email
+     * @param email
+     * @return
+     */
     @CrossOrigin(origins = {"http://localhost:3000","https://lagalt-frontend-ten.vercel.app"})
     @GetMapping("whereEmail={email}")
     public ResponseEntity<Response> getProfileByEmail(@PathVariable("email") String email){
@@ -91,14 +112,6 @@ public class UserController {
      * Check the userDto for response body
      * @return Response
      */
-   /* @GetMapping("{userId}/project")
-
-    public ResponseEntity<Response> getAllProjects(@PathVariable("userId") Long userId){
-
-        Response response=new Response("SUCCESS",userService.getProjectThatBelongToUser(userId));
-
-        return ResponseEntity.ok(response);
-    }*/
 
 
     @PostMapping("visible/{id}")
@@ -112,6 +125,6 @@ public class UserController {
     }
 
 
-//hej
+
 
 }

@@ -11,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -21,7 +22,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers ("/api/v1/project/list",    "/api/v1/project/list**") . permitAll () //TODO clean up
+                        .requestMatchers ("/api/v1/project/list","/api/v1/project/list**").permitAll ()
+                        .requestMatchers ("/api/v1/user/","/api/v1/user/**").permitAll ()//TODO clean up
                         //.requestMatchers("/api/v1/resources/authorized").hasAnyAuthority()
                         // All endpoints are protected
                         .anyRequest().authenticated()
