@@ -12,6 +12,23 @@ import org.springframework.security.web.SecurityFilterChain;
 
 public class SecurityConfig {
 
+
+    private static final String[] AUTH_WHITELIST = {
+            // -- Swagger UI v2
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            // -- Swagger UI v3 (OpenAPI)
+            "/v3/api-docs/**",
+            "/swagger-ui/**"
+
+    };
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -23,13 +40,14 @@ public class SecurityConfig {
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers ("/api/v1/project/list","/api/v1/project/list**").permitAll ()
+                        .requestMatchers(AUTH_WHITELIST).permitAll()
                         .requestMatchers ("/api/v1/user/","/api/v1/user/**").permitAll ()//TODO clean up
                         //.requestMatchers("/api/v1/resources/authorized").hasAnyAuthority()
                         // All endpoints are protected
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer()
-                .jwt();
+               .jwt();
         return http.build();
     }
 }
