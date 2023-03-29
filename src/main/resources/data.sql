@@ -1,7 +1,7 @@
 INSERT INTO users (user_id, user_name, user_email, user_description, user_portfolio, profile_visibility)
 VALUES ('089375fd-5cc4-4629-b869-e6fae4d74fc2','Frederikke Frederiksen','frederikkefrederiksen1998@gmail.com', 'Hello. I am Frederikke and i love to make video games, mostly wacky cartoony games, preferably about cats. I work mostly with the Unity3D engine and have some limited experience with 3D modeling in Blender.','github.com/FrederikkeFrederiksen',   false),
-       ('2d8e5f60-f8dd-47f6-b14f-8f055b740829','Nadja Olsen', 'nadjasgmail@gmail.com', 'Hej jeg hedder Nadja og jeg elsker katte', 'github.com/Xarunah',  false),
-       ('cf66c0c4-a07e-4d06-bb5b-bbc95d162b7f','Jens Jensen', 'admin@email.com', 'I am admin', '...', false),
+       ('2d8e5f60-f8dd-47f6-b14f-8f055b740829','Nadja Olsen', 'nadjasgmail@gmail.com', 'Hello, I am Nadja and love to create websites using ReactJS and Tailwind. I also love cats. ', 'github.com/Xarunah',  false),
+       ('cf66c0c4-a07e-4d06-bb5b-bbc95d162b7f','Jens Jensen', 'admin@email.com', 'I am Jens. I like to create sound effects for video games, and some music as well.', 'itch.io/jens42', false),
        ('953c2023-b4e3-4a3e-afe3-296ae034335a', 'Katja Jensen', 'katjajensen@gmail.com', 'i am katja', 'portfolio', false),
        ('2eb7ed5d-adf6-484c-a5fa-808f59461fc6', 'Jonas Amiri', 'jonasamiri6@gmail.com', 'i am jonas', 'portfolio', false);
 
